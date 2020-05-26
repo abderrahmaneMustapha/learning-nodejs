@@ -11,10 +11,21 @@ const members = require('./Members');
 
 const app = express()
 
+
+
 // Handle bars middlware
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs({drfaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+
+// Home page route
+app.get('/', (req, res)=> res.render('index', {
+    title : 'Members title',
+    members
+}))
+
+//SET static folder
+app.use(express.static(path.join(__dirname,'public')))
 // init Moddleware
 app.use(logger)
 
@@ -26,8 +37,7 @@ app.use(express.urlencoded({extended : false}))
 // Members route API
 app.use('/api/members', require('./routes/api/members'));
 
-//SET static folder
-app.use(express.static(path.join(__dirname,'public')))
+
 const PORT = process.env.PORT || 5000
 
 

@@ -37,10 +37,11 @@ router.post('/', (res, req)=>{
     }
 
     if (!newMember.name || !newMember.email){
-        res.status(400).json({msg : 'please include a name and email'})
+        res.res.status(400).json({msg : 'please include a name and email'})
     }
     members.push(newMember)
-    res.res.json(members)
+    //res.res.json(members)
+    res.res.redirect('/')
 })
 
 
