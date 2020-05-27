@@ -13,10 +13,20 @@ app.get('/', (req, res)=> {
 })
 
 io.on('connection', (socket) =>{
+    socket.on('connect', () => { 
+        io.emit("connect", "a new user is online")
+    });
+
+    
     socket.on('chat message', (msg)=>{
         io.emit("chat message", msg)
     })
 
+    socket.on('disconnect', () => { 
+        io.emit("disconnect", "a user has been diconnected ")
+    });
+
+   
 })
 PORT  = process.env.PORT  || 8000
 
