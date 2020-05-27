@@ -6,9 +6,13 @@
 
       body { font: 13px Helvetica, Arial; }
       #message-form { padding: 3px; position: fixed; bottom: 0;  display: grid; grid-template-columns: 50% 30%; }
-     
-  
-      #messages { list-style-type: none; margin: 0; padding: 0; }
+      .col-md-3{ border-right: rgb(230, 218, 218) solid 1px; height:100vh}
+      #nickname-form-container{
+        margin: 20% 5% 0 5%;
+        
+      }
+      ul { list-style-type: none; margin: 0; padding: 0; }
+      .none{display: none;}
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
       .col-md-4{
@@ -19,16 +23,16 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
-  <body class="container">
-    <div id="nickname-form-container">
+  <body class="container-fluid">
+    <div id="nickname-form-container" >
       <form id="addnickname">
         <div class="form-group">
           
-          <input type="email" class="form-control" id="nickname" placeholder="Enter nickname" required>
+          <input type="email" class="form-control" id="nickname" name="nickname" placeholder="Enter nickname" required>
           
         </div>
         <button type="submit" class="btn btn-primary" 
-        onclick="get_nickname()" form="addnickname" >Save changes</button>
+        onclick="get_nickname()" form="addnickname" >join the room</button>
       </form>
     </div>
   
@@ -38,11 +42,19 @@
    
 
 
-  <div  id="chat" class="col-md-7 col-sm-12 invisible h-0">
-    <ul class="w-100" id="messages"></ul>
-    <form  class="w-100" id="message-form">
-      <input id="m" autocomplete="off" class="form-control"  /><button class="btn btn-success">Send</button>
-    </form>
+  <div  id="chat" class="invisible h-0 row">
+    <div class="col-md-3 col-sm-3">
+      <h5 >online users</h5>
+      <ul id="connected" ></ul>
+    </div>
+
+    <div class="col-md-7 col-sm-8 w-100">
+      <ul class="" id="messages"></ul>
+      <form  class="" id="message-form">
+        <input id="m" autocomplete="off" class="form-control"  /><button class="btn btn-success">Send</button>
+      </form>
+    </div>
+  
   </div>
 
     

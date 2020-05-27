@@ -15,6 +15,12 @@ app.get('/', (req, res)=> {
 io.on('connection', (socket) =>{
     socket.on('nickname', (msg) => { 
         io.emit("nickname", msg)
+
+    });
+
+    socket.on('online', (nickname) => { 
+        io.emit("online", nickname)
+
     });
 
     
