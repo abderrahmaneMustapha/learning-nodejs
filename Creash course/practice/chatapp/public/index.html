@@ -3,24 +3,63 @@
   <head>
     <title>Socket.IO chat</title>
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+
       body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: 0.5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #message-form { padding: 3px; position: fixed; bottom: 0;  display: grid; grid-template-columns: 50% 30%; }
+     
+  
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+      .col-md-4{
+        height: 100vh;
+        border-right: #000 solid 1px;
+      }
     </style>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
+  <body class="container">
+    <div id="nickname-form-container">
+      <form id="addnickname">
+        <div class="form-group">
+          
+          <input type="email" class="form-control" id="nickname" placeholder="Enter nickname" required>
+          
+        </div>
+        <button type="submit" class="btn btn-primary" 
+        onclick="get_nickname()" form="addnickname" >Save changes</button>
+      </form>
+    </div>
+  
+    
+  
+
+   
+
+
+  <div  id="chat" class="col-md-7 col-sm-12 invisible h-0">
+    <ul class="w-100" id="messages"></ul>
+    <form  class="w-100" id="message-form">
+      <input id="m" autocomplete="off" class="form-control"  /><button class="btn btn-success">Send</button>
     </form>
+  </div>
+
+    
+
+
+
+    
+
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-<script src="js/index.js">
+<script src="js/index.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
 </script>
   </body>

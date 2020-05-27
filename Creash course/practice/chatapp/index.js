@@ -13,8 +13,8 @@ app.get('/', (req, res)=> {
 })
 
 io.on('connection', (socket) =>{
-    socket.on('connect', () => { 
-        io.emit("connect", "a new user is online")
+    socket.on('nickname', (msg) => { 
+        io.emit("nickname", msg)
     });
 
     
