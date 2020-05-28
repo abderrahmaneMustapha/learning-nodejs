@@ -29,7 +29,7 @@ io.on('connection', (socket) =>{
     })
 
     socket.on('disconnect', () => { 
-        io.emit("disconnect", socket.username + " Disconnected from Socket " + socket.id)
+        io.emit("disconnect", socket.username)
     });
 
    

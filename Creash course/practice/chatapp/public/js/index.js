@@ -54,10 +54,18 @@ socket.on('online', (nickname)=>{
     li = document.createElement("li")
     li.innerHTML = `${nickname}  <p >online</p>`
     li.setAttribute('class', 'd-flex justify-content-between pl-1')
+    li.setAttribute('id', `${nickname}-online-user`)
     document.getElementById('connected')
     .appendChild(li)
 })
 
 socket.on('disconnect', msg=>{
-    alert(msg);
+    li = document.createElement("li")
+    li.appendChild(document.createTextNode(msg + " left"))
+    li.setAttribute('class', 'bg-white text-muted text-center')
+    document.getElementById('messages')
+     .appendChild(li)
+
+     document.getElementById('connected')
+      .removeChild(document.getElementById(`${msg}-online-user`))
 })
