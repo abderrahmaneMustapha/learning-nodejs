@@ -20,7 +20,7 @@ io.on('connection', (socket) =>{
 
     socket.on('online', (nickname) => { 
         io.emit("online", nickname)
-
+        socket.username = nickname;
     });
 
     
@@ -29,7 +29,7 @@ io.on('connection', (socket) =>{
     })
 
     socket.on('disconnect', () => { 
-        io.emit("disconnect", "a user has been diconnected ")
+        io.emit("disconnect", socket.username + " Disconnected from Socket " + socket.id)
     });
 
    

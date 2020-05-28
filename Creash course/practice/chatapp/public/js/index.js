@@ -10,7 +10,7 @@ get_nickname = ()=>{
 
     }
      
-    socket.emit('nickname', `a new user is online ${nickname}`)
+    socket.emit('nickname', `${nickname} joined`)
     socket.emit('online', nickname)
     alert(`your username is  ${nickname}`)
     username  = nickname
@@ -42,7 +42,11 @@ document.getElementById('message-form')
 
 
  socket.on('nickname', (msg)=>{
-    alert(msg)
+    li = document.createElement("li")
+    li.appendChild(document.createTextNode(msg))
+    li.setAttribute('class', 'bg-white text-muted text-center')
+    document.getElementById('messages')
+     .appendChild(li)
 })
 
 socket.on('online', (nickname)=>{
