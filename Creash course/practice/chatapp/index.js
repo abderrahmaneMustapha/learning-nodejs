@@ -5,11 +5,13 @@ const app = express()
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-app.use(express.static(path.join(__dirname,'public')))
+app.use(express.static(path.join(__dirname,'public'), {
+    extensions: ['html', 'css', 'js']
+}))
 
 
-app.get('/', (req, res)=> {
-    res.render( 'index', {title : "home page"})
+app.get('chat/', (req, res)=> {
+    res.render( 'chat', {title : "home page"})
 })
 
 io.on('connection', (socket) =>{
@@ -36,4 +38,5 @@ io.on('connection', (socket) =>{
 })
 PORT  = process.env.PORT  || 8000
 
+var p  = 0 
 http.listen( PORT, ()=> console.log(`Server started at ${PORT}`))
