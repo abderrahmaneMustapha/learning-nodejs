@@ -2,8 +2,10 @@ const express  = require('express')
 const path = require('path')
 
 const app = express()
+
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
+
 
 app.use(express.static(path.join(__dirname,'public'), {
     extensions: ['html', 'css', 'js']
@@ -11,7 +13,7 @@ app.use(express.static(path.join(__dirname,'public'), {
 
 
 app.get('chat/', (req, res)=> {
-    res.render( 'chat', {title : "home page"})
+    res.render( 'chat', {title : "chat page"})
 })
 
 io.on('connection', (socket) =>{
@@ -35,7 +37,23 @@ io.on('connection', (socket) =>{
     });
 
    
+
+    socket.on('stream', stream =>{
+        console.log(stream)
+        socket.broadcast.emit('stream', stream);
+      
+            
+    });
+
 })
+
+
+app.get('video/', (req, res)=> {
+    res.render( 'video', {title : "video page"})
+})
+
+
+
 PORT  = process.env.PORT  || 8000
 
 var p  = 0 
