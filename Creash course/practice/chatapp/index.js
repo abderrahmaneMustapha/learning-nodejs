@@ -7,6 +7,8 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 
+app.use('/scripts', express.static(`${__dirname}/node_modules/`));
+
 app.use(express.static(path.join(__dirname,'public'), {
     extensions: ['html', 'css', 'js']
 }))
