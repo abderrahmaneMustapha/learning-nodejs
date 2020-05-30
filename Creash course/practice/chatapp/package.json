@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "npx watchify ./public/js/video.js -o ./public/js/bundle.js"
   },
   "keywords": [],
   "author": "",
@@ -12,10 +12,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "handlebars": "^4.7.6",
-    "jquery": "^3.5.1",
     "node-media-server": "^2.1.9",
-    "semantic-ui-css": "^2.4.1",
-    "simplewebrtc": "^3.0.2",
-    "socket.io": "^2.3.0"
+    "simple-peer": "^9.7.2",
+    "socket.io": "^2.3.0",
+    "watchify": "^3.11.1"
   }
 }
