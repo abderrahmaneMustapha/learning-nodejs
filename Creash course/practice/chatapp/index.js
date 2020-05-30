@@ -18,6 +18,14 @@ app.get('chat/', (req, res)=> {
     res.render( 'chat', {title : "chat page"})
 })
 
+app.get('video/', (req, res)=> {
+    res.render( 'video', {title : "video page"})
+})
+
+
+/* Video Clients List */
+let clients = 0
+console.log('client in the start', clients)
 io.on('connection', (socket) =>{
     socket.on('nickname', (msg) => { 
         io.emit("nickname", msg)
@@ -40,19 +48,39 @@ io.on('connection', (socket) =>{
 
    
 
-    socket.on('stream', stream =>{
-        console.log(stream)
-        socket.broadcast.emit('stream', stream);
-      
+
+
+
+    /* Videos chat part */
+
+    socket.on("NewClient", ()=>{  
+        console.log(clients)     
+        if (clients < 4) {
+           
+                socket.emit('CreatePeer')
             
-    });
+        }
+        else
+        socket.emit('SessionActive')
+        clients++;
+    })
 
+    socket.on('Offer', offer =>{
+        socket.broadcast.emit("BackOffer", offer)
+    })
+    socket.on('Answer', data =>{
+        socket.broadcast.emit("BackAnswer", data)
+    })
+    socket.on('disconnect', ()=>{
+        if (clients > 0) {
+            if (clients <= 2)
+                socket.broadcast.emit("Disconnect")
+            clients--
+        }
+    })
+    
 })
 
-
-app.get('video/', (req, res)=> {
-    res.render( 'video', {title : "video page"})
-})
 
 
 
