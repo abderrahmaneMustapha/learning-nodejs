@@ -5,12 +5,7 @@ let btnGoRoom = document.getElementById('goRoom')
 let localVideo = document.getElementById('localVideo')
 let remoteVideo = document.getElementById('remoteVideo')
 
-console.log(divSelectRoom)
-console.log(divConsulingRoom)
-console.log(inputRoomNumber)
-console.log(btnGoRoom)
-console.log(localVideo)
-console.log(remoteVideo)
+
 let roomNumber, localStream, remoteStream, rtcPeerConnection, isCaller
 
 const iceServers = {
@@ -70,7 +65,6 @@ socket.on('ready', ()=>{
         rtcPeerConnection.addTrack(localStream.getTracks()[0], localStream)
         rtcPeerConnection.addTrack(localStream.getTracks()[1], localStream)
         rtcPeerConnection.createOffer()
-
             .then(sessionDescription =>{
                 console.log('sending offer')
                 rtcPeerConnection.setLocalDescription(sessionDescription)
@@ -88,6 +82,7 @@ socket.on('ready', ()=>{
 
 
 socket.on('offer', (event)=>{
+    console.log('im offering this bfore condition')
     if(!isCaller){
         console.log('im offering this ',event )
         rtcPeerConnection = new RTCPeerConnection(iceServers)
@@ -125,13 +120,13 @@ socket.on('candidate',event =>{
     rtcPeerConnection.addIceCandidate(candidate)
 } )
 
-onAddStream = event =>{
-    console.log("this is an event ",event)
+function onAddStream (event){
+    console.log("this is an event add stream ",event)
     remoteVideo.srcObject = event.streams[0]
     remoteStream = event.streams[0]
 }
 
-onIceCandidate = event =>{
+function onIceCandidate (event){
     if(event.candidate){
         console.log('sending ice candidate', event.candidate)
         socket.emit('candidate', {

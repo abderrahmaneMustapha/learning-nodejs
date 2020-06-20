@@ -23,7 +23,7 @@ io.on('connection', socket =>{
             socket.join(room)
             socket.emit('created', room)
         }else if (numClients == 1){
-            console.log("someone join the room",room)
+            
             socket.join(room)
             socket.emit('joined', room)
         } else{
@@ -35,15 +35,15 @@ io.on('connection', socket =>{
         socket.broadcast.to(room).emit('ready')
     })
 
-    socket.on('candidate', room =>{
-        socket.broadcast.to(room).emit('candidate')
+    socket.on('candidate', event=>{
+        socket.broadcast.to(event.room).emit('candidate', event)
     })
 
-    socket.on('offer', room =>{
-        socket.broadcast.to(room).emit('offer')
+    socket.on('offer', event =>{
+        socket.broadcast.to(event.room).emit('offer', event)
     })
 
-    socket.on('answer', room =>{
-        socket.broadcast.to(room).emit('answer')
+    socket.on('answer', event =>{
+        socket.broadcast.to(event.room).emit('answer', event)
     })
 })
