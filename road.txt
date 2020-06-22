@@ -1,2 +1,3 @@
 done basic layouts and styling
 done with front end networking app
+done with Web Fundamentals -> Introduction to Focus
