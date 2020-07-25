@@ -3,3 +3,4 @@ done with front end networking app
 done with Web Fundamentals -> Introduction to Focus
 done  with service worker life cycle
 done with service worker Scripting the service worker
+done with serivce worker and using cache
