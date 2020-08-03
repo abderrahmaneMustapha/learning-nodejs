@@ -7,4 +7,4 @@ done with serivce worker and using cache
 done  offline quickstart
 done airhorne codelab 
 done The App Shell Model
-last lab : 5 index db , 4 done
+indexeddb lab done
