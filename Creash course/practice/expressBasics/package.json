@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.4",
+    "express-handlebars": "^5.3.1",
     "glob": "^7.1.6",
     "moment": "^2.26.0",
     "uuid": "^8.1.0"
