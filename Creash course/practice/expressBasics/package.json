@@ -14,7 +14,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "glob": "^7.1.6",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "uuid": "^8.1.0"
   },
   "devDependencies": {
